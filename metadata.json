@@ -1,0 +1,6 @@
+{
+  "name": "Deepak Store",
+  "description": "Next-level grocery & general store shopping app for Deepak Store with live catalog, cart, GPS address autofill, UPI & COD payments, and order tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

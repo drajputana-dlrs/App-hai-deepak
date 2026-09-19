@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Teal Shopping Bag (Left / Larger) -->
+    <!-- Handle -->
+    <path
+        android:pathData="M36,36 C36,27 50,27 50,36"
+        android:strokeWidth="3.5"
+        android:strokeColor="#48CAE4"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Bag Body Front -->
+    <path
+        android:pathData="M26,38 L60,36 L56,84 L22,84 Z"
+        android:fillColor="#0096C7" />
+    <!-- Bag Side Panel Fold -->
+    <path
+        android:pathData="M22,84 L26,38 L34,37 L30,84 Z"
+        android:fillColor="#023E8A" />
+    <!-- Bag Top Rim / Fold -->
+    <path
+        android:pathData="M26,38 L60,36 L57,42 L25,43 Z"
+        android:fillColor="#48CAE4" />
+
+    <!-- Pink Shopping Bag (Right / Foreground) -->
+    <!-- Handle -->
+    <path
+        android:pathData="M60,46 C60,39 74,39 74,46"
+        android:strokeWidth="3.5"
+        android:strokeColor="#FF85A1"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Bag Body Front -->
+    <path
+        android:pathData="M50,48 L84,47 L80,86 L46,86 Z"
+        android:fillColor="#F72585" />
+    <!-- Bag Side Panel Fold -->
+    <path
+        android:pathData="M46,86 L50,48 L56,48 L52,86 Z"
+        android:fillColor="#B5179E" />
+    <!-- Bag Top Rim / Fold -->
+    <path
+        android:pathData="M50,48 L84,47 L82,53 L49,53 Z"
+        android:fillColor="#FF85A1" />
+</vector>
