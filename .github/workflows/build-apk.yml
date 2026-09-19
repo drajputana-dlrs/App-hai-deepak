@@ -44,6 +44,8 @@ jobs:
             -keysize 2048 \
             -validity 10000 \
             -dname "CN=Android Debug,O=Android,C=US"
+          # Also copy to rootDir so build.gradle.kts signingConfigs (rootDir/debug.keystore) finds it
+          cp "$HOME/.android/debug.keystore" ./debug.keystore
 
       - name: Build Debug APK
         run: |
@@ -158,28 +160,29 @@ EOF
             echo "Release URL: $RELEASE_URL"
             echo "APK Asset Filename: $ASSET_NAME"
 
-            cat <<EOF >> "$GITHUB_STEP_SUMMARY"
-          ## 🚀 Debug APK Build & Release Succeeded
+            cat << 'EOF' >> "$GITHUB_STEP_SUMMARY"
+## 🚀 Debug APK Build & Release Succeeded
+EOF
+            echo "- **Release Tag:** \`$TAG_NAME\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **Release Title:** Debug APK Build #${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **APK Asset Filename:** \`$ASSET_NAME\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "- **Release Page:** [View GitHub Release]($RELEASE_URL)" >> "$GITHUB_STEP_SUMMARY"
+            cat << 'EOF' >> "$GITHUB_STEP_SUMMARY"
 
-          - **Release Tag:** \`$TAG_NAME\`
-          - **Release Title:** Debug APK Build #${{ github.run_number }}
-          - **APK Asset Filename:** \`$ASSET_NAME\`
-          - **Release Page:** [View GitHub Release]($RELEASE_URL)
-
-          The APK can be downloaded directly from the release **Assets** section.
-          The standard Actions artifact (\`app-debug-apk\`) is also available as a backup.
-          EOF
+The APK can be downloaded directly from the release **Assets** section.
+The standard Actions artifact (`app-debug-apk`) is also available as a backup.
+EOF
           else
             echo "::warning::GitHub Release publishing was not completed or failed, but APK build and artifact upload succeeded."
             echo "The Actions artifact named 'app-debug-apk' remains available for download from this workflow run."
 
-            cat <<EOF >> "$GITHUB_STEP_SUMMARY"
-          ## ⚠️ GitHub Release Publishing Warning
+            cat << 'EOF' >> "$GITHUB_STEP_SUMMARY"
+## ⚠️ GitHub Release Publishing Warning
 
-          - **APK Build Status:** Succeeded ✅
-          - **Actions Artifact Status:** Uploaded (\`app-debug-apk\`) ✅
-          - **Release Publishing:** Failed or Skipped ⚠️
+- **APK Build Status:** Succeeded ✅
+- **Actions Artifact Status:** Uploaded (`app-debug-apk`) ✅
+- **Release Publishing:** Failed or Skipped ⚠️
 
-          The APK build succeeded and the artifact **\`app-debug-apk\`** is available in the workflow summary for direct download.
-          EOF
+The APK build succeeded and the artifact **`app-debug-apk`** is available in the workflow summary for direct download.
+EOF
           fi
